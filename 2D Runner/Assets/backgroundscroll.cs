@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class backgroundscroll : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+	Material material;
+	Vector2 offset;
+	public float xVelocity;
+	public float yVelocity;
+
+	void Awake()
+	{
+		material = GetComponent<Renderer>().material;
+	}
+
+
+	void Start()
     {
-        
+       
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+		offset = new Vector2(xVelocity, yVelocity);
+
+		material.mainTextureOffset += offset * Time.fixedDeltaTime;
+
     }
 }
